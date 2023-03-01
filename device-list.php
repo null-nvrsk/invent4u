@@ -1,3 +1,4 @@
+<?php include_once 'foo.php' ?>
 <!doctype html>
 <html lang="ru">
 <head>
@@ -9,7 +10,7 @@
 </head>
 <body>
 <?php
-$pdo = new PDO('sqlite:invent.sqlite');
+
 $statement = $pdo->query("SELECT * FROM devices");
 $devices = $statement->fetchAll(PDO::FETCH_ASSOC);
 
