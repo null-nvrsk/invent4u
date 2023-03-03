@@ -28,20 +28,95 @@
                 <th style="min-width: 110px;">Действия</th>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Моноблок</td>
-                    <td>Lenovo IdeaCentre AIO 3 24ALC6</td>
-                    <td>Ryzen 3 5300U 2.6 ГГц/8 ГБ SO-DIMM DDR4/256 ГБ M.2/24" IPS (1920x1080)</td>
-                    <td></td>
-                    <td>НН-10/2022-00193</td>
-                    <td>01.10.2022</td>
-                    <td>OK</td>
-                    <td>
-                        <a href="" class="btn btn-success"><i class="fa fa-edit"></i></a>
-                        <a href="" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
-                    </td>
-                </tr>
+                <?php foreach ($result as $res) { ?>
+                    <tr>
+                        <td><?=$res->id ?></td>
+                        <td><?=$res->type ?></td>
+                        <td><?=$res->model ?></td>
+                        <td><?=$res->specification ?></td>
+                        <td><?=$res->sn ?></td>
+                        <td><?=$res->inventory_number ?></td>
+                        <td><?=$res->install_date ?></td>
+                        <td><?=$res->workable ?></td>
+                        <td>
+                            <a href="?id=<?=$res->id ?>" class="btn btn-success"
+                               data-bs-toggle="modal" data-bs-target="#edit<?=$res->id?>">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?=$res->id?>">
+                                <i class="fa fa-trash-alt"></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- Modal edit -->
+                    <div class="modal fade" id="edit<?=$res->id?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Изменить запись</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form action="?id=<?=$res->id?>" method="post">
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <small>Тип</small>
+                                            <input type="text" class="form-control" name="type" value="<?=$res->type ?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <small>Модель</small>
+                                            <input type="text" class="form-control" name="model" value="<?=$res->model ?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <small>Характеристики</small>
+                                            <input type="text" class="form-control" name="specification" value="<?=$res->specification ?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <small>Серийный номер</small>
+                                            <input type="text" class="form-control" name="sn" value="<?=$res->sn ?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <small>Инвентарный номер</small>
+                                            <input type="text" class="form-control" name="inventory_number" value="<?=$res->inventory_number ?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <small>Дата установки</small>
+                                            <input type="text" class="form-control" name="install_date" value="<?=$res->install_date ?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <small>Работоспособность</small>
+                                            <input type="text" class="form-control" name="workable" value="<?=$res->workable ?>">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                                        <button type="submit" class="btn btn-primary" name="edit">Сохранить</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal edit -->
+
+                    <!-- Modal delete -->
+                    <div class="modal fade" id="delete<?=$res->id?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Удалить запись №<?=$res->id?></h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form action="?id=<?=$res->id?>" method="post">
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                                        <button type="submit" class="btn btn-danger" name="delete">Удалить</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal delete -->
+                <?php } ?>
                 </tbody>
             </table>
         </div>
@@ -62,32 +137,26 @@
                         <small>Тип</small>
                         <input type="text" name="type" class="form-control">
                     </div>
-
                     <div class="form-group">
                         <small>Модель</small>
                         <input type="text" name="model" class="form-control">
                     </div>
-
                     <div class="form-group">
                         <small>Характеристики</small>
                         <input type="text" name="specification" class="form-control">
                     </div>
-
                     <div class="form-group">
                         <small>Серийный номер</small>
                         <input type="text" name="sn" class="form-control">
                     </div>
-
                     <div class="form-group">
                         <small>Инвентарный номер</small>
                         <input type="text" name="inventory_number" class="form-control">
                     </div>
-
                     <div class="form-group">
                         <small>Дата установки</small>
                         <input type="text" name="install_date" class="form-control">
                     </div>
-
                     <div class="form-group">
                         <small>Работоспособность</small>
                         <input type="text" name="workable" class="form-control">
