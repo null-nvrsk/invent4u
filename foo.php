@@ -2,14 +2,16 @@
 
 include 'config-db.php';
 
-$type = $_POST['type'];
-$model = $_POST['model'];
-$specification = $_POST['specification'];
-$sn = $_POST['sn'];
-$inventory_number = $_POST['inventory_number'];
-$install_date = $_POST['install_date'];
-$workable = $_POST['workable'];
-$det_id = $_GET['id'];
+$type = $_POST['type'] ?? '';
+$model = $_POST['model'] ?? '';
+$specification = $_POST['specification'] ?? '';
+$sn = $_POST['sn'] ?? '';
+$inventory_number = $_POST['inventory_number'] ?? '';
+$install_date = $_POST['install_date'] ?? null;
+$workable = $_POST['workable'] ?? null;
+$det_id = $_GET['id'] ?? null;
+
+global $pdo;
 
 // Create
 if (isset($_POST['add']))
