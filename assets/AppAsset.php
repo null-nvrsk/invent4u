@@ -46,6 +46,8 @@ class AppAsset extends AssetBundle
         '../../plugins/datatables-buttons/js/buttons.colVis.min.js',
         '../../dist/js/adminlte.min.js',
         '../../dist/js/demo.js',
+
+        '../../js/dataTables.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

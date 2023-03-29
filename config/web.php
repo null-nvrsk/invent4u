@@ -10,12 +10,16 @@ $config = [
     'layout' => 'adminlte',
     'name' => 'AdminLTE 3',
     'language' => 'ru',
+    'defaultRoute' => 'device/index',
 
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+        'formatter' => [
+            'dateFormat' => 'dd.MM.yyyy',
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'hylSUnMPIXDAgbrIE4LfwfrrK2oJR4n2',
