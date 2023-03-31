@@ -85,6 +85,12 @@ $this->title = Yii::$app->name." | DataTables";
             <!-- /.col -->
         </div>
         <!-- /.row -->
+
+        <div class="pagination">
+            <div class="nav-links">
+                <?= \yii\widgets\LinkPager::widget(['pagination' => $pages]) ?>
+            </div>
+        </div>
     </div>
     <!-- /.container-fluid -->
 </section>
