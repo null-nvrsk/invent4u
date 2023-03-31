@@ -10,9 +10,13 @@ class DeviceController extends Controller
 {
     public function actionIndex()
     {
-//        $devices = Device::find()->all();
         $query = Device::find();
-        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 100]);
+        $pages = new Pagination([
+            'totalCount' => $query->count(),
+            'pageSize' => 20,
+            'forcePageParam' => false,
+            'pageSizeParam' => false
+        ]);
         $devices = $query->offset($pages->offset)->limit($pages->limit)->all();
         return $this->render('index', compact('devices', 'pages'));
     }
