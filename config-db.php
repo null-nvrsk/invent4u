@@ -1,11 +1,14 @@
 <?php
 
-//$GLOBALS['$pdo'];
+$servername = "localhost";
+$username = "root";
+$password = "";
 
-$db = 'invent.sqlite';
+//$db = 'sqlite:invent.sqlite';
+$db = "mysql:host=$servername;dbname=invent";
 
 try {
-    $pdo = new PDO('sqlite:'.$db);
+    $pdo = new PDO($db, $username, $password);
 } catch (PDOException $e) {
     echo 'Ошибка соединения с БД '.$e->getMessage();
     //TODO: почему-то ошибка не обрабатывается

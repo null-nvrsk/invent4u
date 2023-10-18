@@ -81,7 +81,7 @@
                                         </div>
                                         <div class="form-group">
                                             <small>Дата установки</small>
-                                            <input type="text" class="form-control" name="install_date" value="<?=$res->install_date ?>">
+                                            <input type="date" class="form-control" name="install_date" value="<?=$res->install_date ?>">
                                         </div>
                                         <div class="form-group">
                                             <small>Работоспособность</small>
@@ -155,7 +155,7 @@
                     </div>
                     <div class="form-group">
                         <small>Дата установки</small>
-                        <input type="text" name="install_date" class="form-control">
+                        <input type="date" name="install_date" class="form-control">
                     </div>
                     <div class="form-group">
                         <small>Работоспособность</small>
